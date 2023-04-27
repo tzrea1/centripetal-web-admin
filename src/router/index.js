@@ -51,16 +51,16 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/content',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/content/table',
+    name: 'Content',
+    meta: { title: '学习内容', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
@@ -78,25 +78,25 @@ export const constantRoutes = [
   },
 
   {
-    path: '/form',
+    path: '/contest',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: 'Contest',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '答题竞赛', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/group',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/group/menu1',
+    name: 'Group',
     meta: {
-      title: 'Nested',
+      title: '学习小组',
       icon: 'nested'
     },
     children: [
@@ -148,18 +148,18 @@ export const constantRoutes = [
       }
     ]
   },
-
   {
-    path: 'external-link',
+    path: '/user',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'index',
+        name: 'User',
+        component: () => import('@/views/form/index'),
+        meta: { title: '用户管理', icon: 'user' }
       }
     ]
   },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
