@@ -2,11 +2,15 @@ const Mock = require('mockjs')
 const { param2Obj } = require('./utils')
 
 const user = require('./user')
-const table = require('./table')
+const role = require('./role')
+const content = require('./content')
+const search = require('./remote-search')
 
 const mocks = [
   ...user,
-  ...table
+  ...role,
+  ...content,
+  ...search
 ]
 
 // for front mock
@@ -54,4 +58,3 @@ module.exports = {
   mocks,
   mockXHR
 }
-

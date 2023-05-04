@@ -8,7 +8,7 @@ import Layout from '@/layout'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
+ * Detail see: https://panjiachen.github.io/centripetal-web-admin-site/guide/essentials/router-and-nav.html
  *
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
  * alwaysShow: true               if set true, will always show the root menu
@@ -63,16 +63,23 @@ export const constantRoutes = [
     meta: { title: '学习内容', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'create',
+        component: () => import('@/views/content/create'),
+        name: 'CreateContent',
+        meta: { title: '创建学习内容', icon: 'edit' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/content/edit'),
+        name: 'EditContent',
+        meta: { title: '修改学习内容', noCache: true, activeMenu: '/content/list' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/content/list'),
+        name: 'ContentList',
+        meta: { title: '学习内容列表', icon: 'list' }
       }
     ]
   },
@@ -80,12 +87,28 @@ export const constantRoutes = [
   {
     path: '/contest',
     component: Layout,
+    redirect: '/contest/table',
+    name: 'Contest',
+    meta: { title: '答题竞赛', icon: 'form' },
     children: [
       {
-        path: 'index',
-        name: 'Contest',
-        component: () => import('@/views/form/index'),
-        meta: { title: '答题竞赛', icon: 'form' }
+        path: 'create',
+        component: () => import('@/views/contest/create'),
+        name: 'CreateContest',
+        meta: { title: '创建答题竞赛', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/contest/edit'),
+        name: 'EditContest',
+        meta: { title: '修改答题竞赛', noCache: true, activeMenu: '/contest/list' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/contest/list'),
+        name: 'ContestList',
+        meta: { title: '答题竞赛列表', icon: 'list' }
       }
     ]
   },
@@ -151,12 +174,28 @@ export const constantRoutes = [
   {
     path: '/user',
     component: Layout,
+    redirect: '/user/table',
+    name: 'User',
+    meta: { title: '用户管理', icon: 'user' },
     children: [
       {
-        path: 'index',
-        name: 'User',
-        component: () => import('@/views/form/index'),
-        meta: { title: '用户管理', icon: 'user' }
+        path: 'create',
+        component: () => import('@/views/user/create'),
+        name: 'CreateUser',
+        meta: { title: '创建用户信息', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/user/edit'),
+        name: 'EditUser',
+        meta: { title: '修改用户信息', noCache: true, activeMenu: '/user/list' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/user/list'),
+        name: 'UserList',
+        meta: { title: '用户信息列表', icon: 'list' }
       }
     ]
   },
