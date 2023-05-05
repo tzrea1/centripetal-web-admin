@@ -12,19 +12,19 @@
           </el-form-item>
 
           <el-form-item label="答题竞赛题数">
-            <el-input-number v-model="form.questionCount" :min="1" :max="100" />
+            <el-input-number v-model="form.quiz_num" :min="1" :max="100" />
           </el-form-item>
 
           <el-form-item label="开始时间">
-            <el-date-picker v-model="form.examStartTime" type="datetime" placeholder="选择日期时间" />
+            <el-date-picker v-model="form.start_time" type="datetime" placeholder="选择日期时间" />
           </el-form-item>
 
           <el-form-item label="结束时间">
-            <el-date-picker v-model="form.examEndTime" type="datetime" placeholder="选择日期时间" />
+            <el-date-picker v-model="form.end_time" type="datetime" placeholder="选择日期时间" />
           </el-form-item>
 
           <el-form-item label="答题竞赛时长(分钟)">
-            <el-input-number v-model="form.timeLimit" :min="1" :max="360" />
+            <el-input-number v-model="form.time_limit" :min="1" :max="360" />
           </el-form-item>
 
           <el-form-item label="题目内容">
@@ -55,16 +55,18 @@
 </template>
 
 <script>
+import { fetchContest } from '@/api/contest'
 export default {
   data() {
     return {
       form: {
         title: '',
         discription: '',
-        questionCount: 0,
-        examStartTime: '',
+        quiz_num: 0,
+        start_time: '',
+        end_time: '',
         examEndTime: '',
-        timeLimit: 0,
+        time_limit: 0,
         questions: []
       },
       options: [
@@ -76,14 +78,23 @@ export default {
       ]
     }
   },
+  created() {
+    this.getContest()
+  },
   methods: {
+    getContest() {
+      fetchContest(this.$route.params.id).then(response => {
+        this.form = response.data
+        console.log('contest:', this.form)
+      })
+    },
     addQuestion() {
       this.form.questions.push({
-        type: '',
+        quiz_type: '',
         content: '',
         options: '',
         answer: '',
-        score: ''
+        quiz_score: ''
       })
     },
     submitForm(formName) {

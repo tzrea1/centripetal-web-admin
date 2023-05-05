@@ -1,13 +1,13 @@
 <template>
-  <contest-detail :is-edit="true" />
+  <update-quiz :is-edit="true" />
 </template>
 
 <script>
-import ContestDetail from './components/ContestDetail'
+import UpdateQuiz from './components/UpdateQuiz.vue'
 
 export default {
   name: 'EditContest',
-  components: { ContestDetail }
+  components: { UpdateQuiz }
 }
 </script>
 
