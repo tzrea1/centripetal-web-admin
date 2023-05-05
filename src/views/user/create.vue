@@ -1,13 +1,12 @@
 <template>
-  <user-detail :is-edit="false" />
+  <create-user-info />
 </template>
 
 <script>
-import UserDetail from './components/UserDetail.vue'
-
+import CreateUserInfo from '@/views/user/components/CreateUserInfo.vue'
 export default {
   name: 'CreateUser',
-  components: { UserDetail }
+  components: { CreateUserInfo }
 }
 </script>
 

@@ -87,7 +87,7 @@ export const constantRoutes = [
   {
     path: '/contest',
     component: Layout,
-    redirect: '/contest/table',
+    redirect: '/contest/list',
     name: 'Contest',
     meta: { title: '答题竞赛', icon: 'form' },
     children: [
@@ -95,7 +95,7 @@ export const constantRoutes = [
         path: 'create',
         component: () => import('@/views/contest/create'),
         name: 'CreateContest',
-        meta: { title: '创建答题竞赛', icon: 'edit' }
+        meta: { title: '创建答题竞赛', icon: 'el-icon-message-solid' }
       },
       {
         path: 'edit/:id(\\d+)',
@@ -108,7 +108,7 @@ export const constantRoutes = [
         path: 'list',
         component: () => import('@/views/contest/list'),
         name: 'ContestList',
-        meta: { title: '答题竞赛列表', icon: 'list' }
+        meta: { title: '答题竞赛列表', icon: 'el-icon-s-order' }
       }
     ]
   },
@@ -174,7 +174,7 @@ export const constantRoutes = [
   {
     path: '/user',
     component: Layout,
-    redirect: '/user/table',
+    redirect: '/user/list',
     name: 'User',
     meta: { title: '用户管理', icon: 'user' },
     children: [
@@ -182,7 +182,7 @@ export const constantRoutes = [
         path: 'create',
         component: () => import('@/views/user/create'),
         name: 'CreateUser',
-        meta: { title: '创建用户信息', icon: 'edit' }
+        meta: { title: '创建用户信息', icon: 'el-icon-s-check' }
       },
       {
         path: 'edit/:id(\\d+)',
@@ -195,7 +195,7 @@ export const constantRoutes = [
         path: 'list',
         component: () => import('@/views/user/list'),
         name: 'UserList',
-        meta: { title: '用户信息列表', icon: 'list' }
+        meta: { title: '用户信息列表', icon: 'el-icon-s-order' }
       }
     ]
   },
