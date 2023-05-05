@@ -112,5 +112,11 @@ export default {
 .el-form-item {
   margin-bottom: 20px;
 }
+.el-select{
+  margin-bottom: 20px;
+}
+.el-input{
+  margin-bottom: 20px;
+}
 </style>
 
