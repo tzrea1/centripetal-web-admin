@@ -16,14 +16,6 @@ export function fetchContent(id) {
   })
 }
 
-export function fetchPv(pv) {
-  return request({
-    url: '/centripetal-web-admin/content/pv',
-    method: 'get',
-    params: { pv }
-  })
-}
-
 export function createContent(data) {
   return request({
     url: '/centripetal-web-admin/content/create',
@@ -37,5 +29,13 @@ export function updateContent(data) {
     url: '/centripetal-web-admin/content/update',
     method: 'post',
     data
+  })
+}
+
+export function deleteContent(id) {
+  return request({
+    url: '/centripetal-web-admin/content/delete',
+    method: 'post',
+    params: { id }
   })
 }
