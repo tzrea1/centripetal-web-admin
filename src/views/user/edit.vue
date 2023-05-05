@@ -1,13 +1,13 @@
 <template>
-  <user-detail :is-edit="true" />
+  <update-user-info :is-edit="true" />
 </template>
 
 <script>
-import UserDetail from './components/UserDetail.vue'
+import UpdateUserInfo from './components/UpdateUserInfo.vue'
 
 export default {
   name: 'EditUser',
-  components: { UserDetail }
+  components: { UpdateUserInfo }
 }
 </script>
 
