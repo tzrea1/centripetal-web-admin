@@ -1,13 +1,12 @@
 <template>
-  <contest-detail :is-edit="false" />
+  <create-quiz />
 </template>
 
 <script>
-import ContestDetail from './components/ContestDetail'
-
+import CreateQuiz from '@/views/contest/components/CreateQuiz.vue'
 export default {
   name: 'CreateContest',
-  components: { ContestDetail }
+  components: { CreateQuiz }
 }
 </script>
 
