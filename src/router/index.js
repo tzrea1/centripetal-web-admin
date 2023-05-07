@@ -116,7 +116,7 @@ export const constantRoutes = [
   {
     path: '/group',
     component: Layout,
-    redirect: '/group/menu1',
+    redirect: '/group/list',
     name: 'Group',
     meta: {
       title: '学习小组',
@@ -124,50 +124,23 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'list',
+        component: () => import('@/views/group/list'), // Parent router-view
+        name: 'GroupList',
+        meta: { title: '学习小组列表' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'info/:id(\\d+)',
+        component: () => import('@/views/group/info'), // Parent router-view
+        name: 'GroupInfo',
+        meta: { title: '小组信息', noCache: true, activeMenu: '/group/list' },
+        hidden: true
+      },
+      {
+        path: 'create',
+        component: () => import('@/views/group/create'), // Parent router-view
+        name: 'CreateGroup',
+        meta: { title: '创建学习小组' }
       }
     ]
   },

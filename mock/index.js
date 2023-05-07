@@ -5,6 +5,7 @@ const user = require('./user')
 const role = require('./role')
 const content = require('./content')
 const contest = require('./contest')
+const group = require('./group')
 const search = require('./remote-search')
 
 const mocks = [
@@ -12,6 +13,7 @@ const mocks = [
   ...role,
   ...content,
   ...contest,
+  ...group,
   ...search
 ]
 
