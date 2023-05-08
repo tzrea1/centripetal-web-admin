@@ -178,19 +178,55 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/system/notice',
     name: 'System',
-    meta: { title: '系统管理', icon: 'user' },
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
     children: [
       {
         path: 'notice',
         component: () => import('@/views/system/notice/index'),
         name: 'Notice',
-        meta: { title: '通知管理', icon: 'el-icon-s-check' }
+        meta: { title: '通知管理', icon: 'el-icon-message-solid' }
       },
       {
         path: 'group',
         component: () => import('@/views/system/group/index'),
         name: 'Group',
-        meta: { title: '小组管理', icon: 'el-icon-s-check' }
+        meta: { title: '小组管理', icon: 'el-icon-menu' }
+      },
+      {
+        path: 'content',
+        component: () => import('@/views/system/content/index'),
+        name: 'Content',
+        meta: { title: '党史学习内容', icon: 'el-icon-folder' }
+      },
+      {
+        path: 'content-adt',
+        component: () => import('@/views/system/content-adt/index'),
+        name: 'Content-adt',
+        meta: { title: '学习内容审核', icon: 'el-icon-folder-checked' }
+      },
+      {
+        path: 'content-rec',
+        component: () => import('@/views/system/content-rec/index'),
+        name: 'Content-rec',
+        meta: { title: '学习记录管理', icon: 'el-icon-finished' }
+      },
+      {
+        path: 'contest',
+        component: () => import('@/views/system/contest/index'),
+        name: 'Contest',
+        meta: { title: '党史答题竞赛', icon: 'el-icon-document' }
+      },
+      {
+        path: 'contest-adt',
+        component: () => import('@/views/system/contest-adt/index'),
+        name: 'Contest-adt',
+        meta: { title: '答题竞赛审核', icon: 'el-icon-document-checked' }
+      },
+      {
+        path: 'contest-rec',
+        component: () => import('@/views/system/contest-rec/index'),
+        name: 'Contest-rec',
+        meta: { title: '答题记录管理', icon: 'el-icon-finished' }
       }
     ]
   },
