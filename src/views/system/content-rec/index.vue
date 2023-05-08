@@ -1,6 +1,22 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
+      <el-form-item label="活动ID" prop="phStudyId">
+        <el-input
+          v-model="queryParams.phStudyId"
+          placeholder="请输入活动ID"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="用户ID" prop="userId">
+        <el-input
+          v-model="queryParams.userId"
+          placeholder="请输入用户ID"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -55,7 +71,7 @@
 
     <el-table v-loading="loading" :data="content-recList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="党史内容学习活动ID" align="center" prop="phStudyId" />
+      <el-table-column label="活动ID" align="center" prop="phStudyId" />
       <el-table-column label="用户ID" align="center" prop="userId" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -124,12 +140,20 @@ export default {
       // 查询参数
       queryParams: {
         pageNum: 1,
-        pageSize: 10
+        pageSize: 10,
+        phStudyId: null,
+        userId: null
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
+        phStudyId: [
+          { required: true, message: '活动ID不能为空', trigger: 'blur' }
+        ],
+        userId: [
+          { required: true, message: '用户ID不能为空', trigger: 'blur' }
+        ]
       }
     }
   },

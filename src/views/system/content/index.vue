@@ -9,34 +9,18 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="党史内容学习活动标题" prop="title">
+      <el-form-item label="活动标题" prop="title">
         <el-input
           v-model="queryParams.title"
-          placeholder="请输入党史内容学习活动标题"
+          placeholder="请输入活动标题"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="党史内容学习活动状态" prop="state">
+      <el-form-item label="状态" prop="state">
         <el-input
           v-model="queryParams.state"
-          placeholder="请输入党史内容学习活动状态"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="党史内容学习活动预览图url" prop="prepicUrl">
-        <el-input
-          v-model="queryParams.prepicUrl"
-          placeholder="请输入党史内容学习活动预览图url"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="党史内容学习内容主题" prop="contentUrl">
-        <el-input
-          v-model="queryParams.contentUrl"
-          placeholder="请输入党史内容学习内容主题"
+          placeholder="请输入状态"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -95,13 +79,13 @@
 
     <el-table v-loading="loading" :data="contentList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="党史内容学习活动ID" align="center" prop="phStudyId" />
+      <el-table-column label="ID" align="center" prop="phStudyId" />
       <el-table-column label="上传者ID" align="center" prop="creatorId" />
-      <el-table-column label="党史内容学习活动标题" align="center" prop="title" />
-      <el-table-column label="党史内容学习活动简介" align="center" prop="description" />
-      <el-table-column label="党史内容学习活动状态" align="center" prop="state" />
-      <el-table-column label="党史内容学习活动预览图url" align="center" prop="prepicUrl" />
-      <el-table-column label="党史内容学习内容主题" align="center" prop="contentUrl" />
+      <el-table-column label="活动标题" align="center" prop="title" />
+      <el-table-column label="活动简介" align="center" prop="description" />
+      <el-table-column label="状态" align="center" prop="state" />
+      <el-table-column label="预览图url" align="center" prop="prepicUrl" />
+      <el-table-column label="内容主体对应html文件url" align="center" prop="contentUrl" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -136,20 +120,20 @@
         <el-form-item label="上传者ID" prop="creatorId">
           <el-input v-model="form.creatorId" placeholder="请输入上传者ID" />
         </el-form-item>
-        <el-form-item label="党史内容学习活动标题" prop="title">
-          <el-input v-model="form.title" placeholder="请输入党史内容学习活动标题" />
+        <el-form-item label="活动标题" prop="title">
+          <el-input v-model="form.title" placeholder="请输入活动标题" />
         </el-form-item>
-        <el-form-item label="党史内容学习活动简介" prop="description">
+        <el-form-item label="活动简介" prop="description">
           <el-input v-model="form.description" type="textarea" placeholder="请输入内容" />
         </el-form-item>
-        <el-form-item label="党史内容学习活动状态" prop="state">
-          <el-input v-model="form.state" placeholder="请输入党史内容学习活动状态" />
+        <el-form-item label="状态" prop="state">
+          <el-input v-model="form.state" placeholder="请输入状态" />
         </el-form-item>
-        <el-form-item label="党史内容学习活动预览图url" prop="prepicUrl">
-          <el-input v-model="form.prepicUrl" placeholder="请输入党史内容学习活动预览图url" />
+        <el-form-item label="预览图url" prop="prepicUrl">
+          <el-input v-model="form.prepicUrl" placeholder="请输入预览图url" />
         </el-form-item>
-        <el-form-item label="党史内容学习内容主题" prop="contentUrl">
-          <el-input v-model="form.contentUrl" placeholder="请输入党史内容学习内容主题" />
+        <el-form-item label="内容主体对应html文件url" prop="contentUrl">
+          <el-input v-model="form.contentUrl" placeholder="请输入内容主体对应html文件url" />
         </el-form-item>
         <el-divider content-position="center">党史内容学习文件信息</el-divider>
         <el-row :gutter="10" class="mb8">
@@ -225,10 +209,7 @@ export default {
         pageSize: 10,
         creatorId: null,
         title: null,
-        description: null,
-        state: null,
-        prepicUrl: null,
-        contentUrl: null
+        state: null
       },
       // 表单参数
       form: {},
@@ -238,10 +219,10 @@ export default {
           { required: true, message: '上传者ID不能为空', trigger: 'blur' }
         ],
         title: [
-          { required: true, message: '党史内容学习活动标题不能为空', trigger: 'blur' }
+          { required: true, message: '活动标题不能为空', trigger: 'blur' }
         ],
         state: [
-          { required: true, message: '党史内容学习活动状态不能为空', trigger: 'blur' }
+          { required: true, message: '状态不能为空', trigger: 'blur' }
         ]
       }
     }
