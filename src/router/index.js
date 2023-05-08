@@ -186,12 +186,11 @@ export const constantRoutes = [
         name: 'Notice',
         meta: { title: '通知管理', icon: 'el-icon-s-check' }
       },
-      // 下面是方便演示导航栏所加的第二个重复child
       {
-        path: 'notice',
-        component: () => import('@/views/system/notice/index'),
-        name: 'Notice',
-        meta: { title: '通知管理', icon: 'el-icon-s-check' }
+        path: 'group',
+        component: () => import('@/views/system/group/index'),
+        name: 'Group',
+        meta: { title: '小组管理', icon: 'el-icon-s-check' }
       }
     ]
   },
