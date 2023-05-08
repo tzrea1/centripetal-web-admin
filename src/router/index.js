@@ -142,6 +142,7 @@ export const constantRoutes = [
         name: 'CreateGroup',
         meta: { title: '创建学习小组' }
       }
+
     ]
   },
   {
@@ -169,6 +170,28 @@ export const constantRoutes = [
         component: () => import('@/views/user/list'),
         name: 'UserList',
         meta: { title: '用户信息列表', icon: 'el-icon-s-order' }
+      }
+    ]
+  },
+  {
+    path: '/system',
+    component: Layout,
+    redirect: '/system/notice',
+    name: 'System',
+    meta: { title: '系统管理', icon: 'user' },
+    children: [
+      {
+        path: 'notice',
+        component: () => import('@/views/system/notice/index'),
+        name: 'Notice',
+        meta: { title: '通知管理', icon: 'el-icon-s-check' }
+      },
+      // 下面是方便演示导航栏所加的第二个重复child
+      {
+        path: 'notice',
+        component: () => import('@/views/system/notice/index'),
+        name: 'Notice',
+        meta: { title: '通知管理', icon: 'el-icon-s-check' }
       }
     ]
   },
