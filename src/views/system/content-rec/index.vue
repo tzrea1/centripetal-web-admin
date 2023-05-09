@@ -26,7 +26,6 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:content-rec:add']"
           type="primary"
           plain
           icon="el-icon-plus"
@@ -36,7 +35,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:content-rec:edit']"
           type="success"
           plain
           icon="el-icon-edit"
@@ -47,7 +45,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:content-rec:remove']"
           type="danger"
           plain
           icon="el-icon-delete"
@@ -58,7 +55,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:content-rec:export']"
           type="warning"
           plain
           icon="el-icon-download"
@@ -66,24 +62,22 @@
           @click="handleExport"
         >导出</el-button>
       </el-col>
-      <right-toolbar :show-search.sync="showSearch" @queryTable="getList" />
+      <right-toolbar :show-search.sync="showSearch" @queryTable="getList" style="margin-left: 330px;;width:100px"/>
     </el-row>
 
-    <el-table v-loading="loading" :data="content-recList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="content_recList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="活动ID" align="center" prop="phStudyId" />
       <el-table-column label="用户ID" align="center" prop="userId" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
-            v-hasPermi="['system:content-rec:edit']"
             size="mini"
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
           >修改</el-button>
           <el-button
-            v-hasPermi="['system:content-rec:remove']"
             size="mini"
             type="text"
             icon="el-icon-delete"
