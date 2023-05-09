@@ -15,6 +15,10 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from '@/utils/centripetal'
+// 富文本组件
+import Editor from './components/Editor/index.vue'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -23,10 +27,22 @@ import '@/permission' // permission control
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
-if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
-}
+
+// if (process.env.NODE_ENV === 'production') {
+//   const { mockXHR } = require('../mock')
+//   mockXHR()
+// }
+
+// 全局方法挂载
+Vue.prototype.parseTime = parseTime
+Vue.prototype.resetForm = resetForm
+Vue.prototype.addDateRange = addDateRange
+Vue.prototype.selectDictLabel = selectDictLabel
+Vue.prototype.selectDictLabels = selectDictLabels
+Vue.prototype.handleTree = handleTree
+
+// 全局组件挂载
+Vue.component('Editor', Editor)
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
