@@ -18,14 +18,11 @@ import '@/permission' // permission control
 
 import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from '@/utils/centripetal'
 // 分页组件
-import Pagination from "./components/Pagination/index.vue";
+import Pagination from './components/Pagination/index.vue'
 // 富文本组件
-import Editor from './components/Editor/index.vue';
+import Editor from './components/Editor/index.vue'
 // 自定义表格工具组件
 import RightToolbar from './components/RightToolbar/index.vue'
-
-import { VueSvgIcon } from '@yzfe/vue-svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
 
 import { VueSvgIcon } from '@yzfe/vue-svgicon'
 import '@yzfe/svgicon/lib/svgicon.css'
