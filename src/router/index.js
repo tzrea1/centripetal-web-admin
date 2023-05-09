@@ -73,24 +73,42 @@ export const constantRoutes = [
     name: 'Content',
     meta: { title: '学习内容', icon: 'el-icon-s-help' },
     children: [
+      // {
+      //   path: 'create',
+      //   component: () => import('@/views/content/create'),
+      //   name: 'CreateContent',
+      //   meta: { title: '创建学习内容', icon: 'edit' }
+      // },
+      // {
+      //   path: 'edit/:id(\\d+)',
+      //   component: () => import('@/views/content/edit'),
+      //   name: 'EditContent',
+      //   meta: { title: '修改学习内容', noCache: true, activeMenu: '/content/list' },
+      //   hidden: true
+      // },
+      // {
+      //   path: 'list',
+      //   component: () => import('@/views/content/list'),
+      //   name: 'ContentList',
+      //   meta: { title: '学习内容列表', icon: 'list' }
+      // }
       {
-        path: 'create',
-        component: () => import('@/views/content/create'),
-        name: 'CreateContent',
-        meta: { title: '创建学习内容', icon: 'edit' }
+        path: 'content',
+        component: () => import('@/views/system/content/index'),
+        name: 'ContentManagement',
+        meta: { title: '党史学习内容', icon: 'el-icon-folder' }
       },
       {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/content/edit'),
-        name: 'EditContent',
-        meta: { title: '修改学习内容', noCache: true, activeMenu: '/content/list' },
-        hidden: true
+        path: 'content-adt',
+        component: () => import('@/views/system/content-adt/index'),
+        name: 'Content-adt-Management',
+        meta: { title: '学习内容审核', icon: 'el-icon-folder-checked' }
       },
       {
-        path: 'list',
-        component: () => import('@/views/content/list'),
-        name: 'ContentList',
-        meta: { title: '学习内容列表', icon: 'list' }
+        path: 'content-rec',
+        component: () => import('@/views/system/content-rec/index'),
+        name: 'Content-rec-Management',
+        meta: { title: '学习记录管理', icon: 'el-icon-finished' }
       }
     ]
   },
@@ -102,24 +120,42 @@ export const constantRoutes = [
     name: 'Contest',
     meta: { title: '答题竞赛', icon: 'form' },
     children: [
+      // {
+      //   path: 'create',
+      //   component: () => import('@/views/contest/create'),
+      //   name: 'CreateContest',
+      //   meta: { title: '创建答题竞赛', icon: 'el-icon-message-solid' }
+      // },
+      // {
+      //   path: 'edit/:id(\\d+)',
+      //   component: () => import('@/views/contest/edit'),
+      //   name: 'EditContest',
+      //   meta: { title: '修改答题竞赛', noCache: true, activeMenu: '/contest/list' },
+      //   hidden: true
+      // },
+      // {
+      //   path: 'list',
+      //   component: () => import('@/views/contest/list'),
+      //   name: 'ContestList',
+      //   meta: { title: '答题竞赛列表', icon: 'el-icon-s-order' }
+      // }
       {
-        path: 'create',
-        component: () => import('@/views/contest/create'),
-        name: 'CreateContest',
-        meta: { title: '创建答题竞赛', icon: 'el-icon-message-solid' }
+        path: 'contest',
+        component: () => import('@/views/system/contest/index'),
+        name: 'Contest-Management',
+        meta: { title: '党史答题竞赛', icon: 'el-icon-document' }
       },
       {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/contest/edit'),
-        name: 'EditContest',
-        meta: { title: '修改答题竞赛', noCache: true, activeMenu: '/contest/list' },
-        hidden: true
+        path: 'contest-adt',
+        component: () => import('@/views/system/contest-adt/index'),
+        name: 'Contest-adt-Management',
+        meta: { title: '答题竞赛审核', icon: 'el-icon-document-checked' }
       },
       {
-        path: 'list',
-        component: () => import('@/views/contest/list'),
-        name: 'ContestList',
-        meta: { title: '答题竞赛列表', icon: 'el-icon-s-order' }
+        path: 'contest-rec',
+        component: () => import('@/views/system/contest-rec/index'),
+        name: 'Contest-rec-Management',
+        meta: { title: '答题记录管理', icon: 'el-icon-finished' }
       }
     ]
   },
@@ -134,26 +170,37 @@ export const constantRoutes = [
       icon: 'nested'
     },
     children: [
+      // {
+      //   path: 'list',
+      //   component: () => import('@/views/group/list'), // Parent router-view
+      //   name: 'GroupList',
+      //   meta: { title: '学习小组列表' }
+      // },
+      // {
+      //   path: 'info/:id(\\d+)',
+      //   component: () => import('@/views/group/info'), // Parent router-view
+      //   name: 'GroupInfo',
+      //   meta: { title: '小组信息', noCache: true, activeMenu: '/group/list' },
+      //   hidden: true
+      // },
+      // {
+      //   path: 'create',
+      //   component: () => import('@/views/group/create'), // Parent router-view
+      //   name: 'CreateGroup',
+      //   meta: { title: '创建学习小组' }
+      // }
       {
-        path: 'list',
-        component: () => import('@/views/group/list'), // Parent router-view
-        name: 'GroupList',
-        meta: { title: '学习小组列表' }
+        path: 'notice',
+        component: () => import('@/views/system/notice/index'),
+        name: 'NoticeManagement',
+        meta: { title: '通知管理', icon: 'el-icon-message-solid' }
       },
       {
-        path: 'info/:id(\\d+)',
-        component: () => import('@/views/group/info'), // Parent router-view
-        name: 'GroupInfo',
-        meta: { title: '小组信息', noCache: true, activeMenu: '/group/list' },
-        hidden: true
-      },
-      {
-        path: 'create',
-        component: () => import('@/views/group/create'), // Parent router-view
-        name: 'CreateGroup',
-        meta: { title: '创建学习小组' }
+        path: 'group',
+        component: () => import('@/views/system/group/index'),
+        name: 'GroupManagement',
+        meta: { title: '小组管理', icon: 'el-icon-menu' }
       }
-
     ]
   },
   {
@@ -184,63 +231,63 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/system',
-    component: Layout,
-    redirect: '/system/notice',
-    name: 'System',
-    meta: { title: '系统管理', icon: 'el-icon-setting' },
-    children: [
-      {
-        path: 'notice',
-        component: () => import('@/views/system/notice/index'),
-        name: 'NoticeManagement',
-        meta: { title: '通知管理', icon: 'el-icon-message-solid' }
-      },
-      {
-        path: 'group',
-        component: () => import('@/views/system/group/index'),
-        name: 'GroupManagement',
-        meta: { title: '小组管理', icon: 'el-icon-menu' }
-      },
-      {
-        path: 'content',
-        component: () => import('@/views/system/content/index'),
-        name: 'ContentManagement',
-        meta: { title: '党史学习内容', icon: 'el-icon-folder' }
-      },
-      {
-        path: 'content-adt',
-        component: () => import('@/views/system/content-adt/index'),
-        name: 'Content-adt-Management',
-        meta: { title: '学习内容审核', icon: 'el-icon-folder-checked' }
-      },
-      {
-        path: 'content-rec',
-        component: () => import('@/views/system/content-rec/index'),
-        name: 'Content-rec-Management',
-        meta: { title: '学习记录管理', icon: 'el-icon-finished' }
-      },
-      {
-        path: 'contest',
-        component: () => import('@/views/system/contest/index'),
-        name: 'Contest-Management',
-        meta: { title: '党史答题竞赛', icon: 'el-icon-document' }
-      },
-      {
-        path: 'contest-adt',
-        component: () => import('@/views/system/contest-adt/index'),
-        name: 'Contest-adt-Management',
-        meta: { title: '答题竞赛审核', icon: 'el-icon-document-checked' }
-      },
-      {
-        path: 'contest-rec',
-        component: () => import('@/views/system/contest-rec/index'),
-        name: 'Contest-rec-Management',
-        meta: { title: '答题记录管理', icon: 'el-icon-finished' }
-      }
-    ]
-  },
+  // {
+  //   path: '/system',
+  //   component: Layout,
+  //   redirect: '/system/notice',
+  //   name: 'System',
+  //   meta: { title: '系统管理', icon: 'el-icon-setting' },
+  //   children: [
+  //     {
+  //       path: 'notice',
+  //       component: () => import('@/views/system/notice/index'),
+  //       name: 'NoticeManagement',
+  //       meta: { title: '通知管理', icon: 'el-icon-message-solid' }
+  //     },
+  //     {
+  //       path: 'group',
+  //       component: () => import('@/views/system/group/index'),
+  //       name: 'GroupManagement',
+  //       meta: { title: '小组管理', icon: 'el-icon-menu' }
+  //     },
+  //     {
+  //       path: 'content',
+  //       component: () => import('@/views/system/content/index'),
+  //       name: 'ContentManagement',
+  //       meta: { title: '党史学习内容', icon: 'el-icon-folder' }
+  //     },
+  //     {
+  //       path: 'content-adt',
+  //       component: () => import('@/views/system/content-adt/index'),
+  //       name: 'Content-adt-Management',
+  //       meta: { title: '学习内容审核', icon: 'el-icon-folder-checked' }
+  //     },
+  //     {
+  //       path: 'content-rec',
+  //       component: () => import('@/views/system/content-rec/index'),
+  //       name: 'Content-rec-Management',
+  //       meta: { title: '学习记录管理', icon: 'el-icon-finished' }
+  //     },
+  //     {
+  //       path: 'contest',
+  //       component: () => import('@/views/system/contest/index'),
+  //       name: 'Contest-Management',
+  //       meta: { title: '党史答题竞赛', icon: 'el-icon-document' }
+  //     },
+  //     {
+  //       path: 'contest-adt',
+  //       component: () => import('@/views/system/contest-adt/index'),
+  //       name: 'Contest-adt-Management',
+  //       meta: { title: '答题竞赛审核', icon: 'el-icon-document-checked' }
+  //     },
+  //     {
+  //       path: 'contest-rec',
+  //       component: () => import('@/views/system/contest-rec/index'),
+  //       name: 'Contest-rec-Management',
+  //       meta: { title: '答题记录管理', icon: 'el-icon-finished' }
+  //     }
+  //   ]
+  // },
   {
     path: '/tool/',
     component: Layout,
@@ -248,7 +295,7 @@ export const constantRoutes = [
       path: 'swagger',
       name: 'Swagger-UI',
       component: () => import('@/views/tool/swagger/index'),
-      meta: { title: '在线文档', icon: 'document' }
+      meta: { title: '接口文档', icon: 'document' }
     }]
   },
   // 404 page must be placed at the end !!!
