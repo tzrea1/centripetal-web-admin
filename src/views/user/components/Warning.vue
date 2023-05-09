@@ -5,7 +5,7 @@
     effect, you can use a browser caching scheme such as localStorage. Or do not use keep-alive include to cache all
     pages directly. See details
     <a
-      href="https://panjiachen.github.io/centripetal-web-admin-site/guide/essentials/tags-view.html"
+      href="https://panjiachen.github.io/system-site/guide/essentials/tags-view.html"
       target="_blank"
     >Document</a>
   </aside>

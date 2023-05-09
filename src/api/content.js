@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(query) {
   return request({
-    url: '/centripetal-web-admin/content/list',
+    url: '/system/content/list',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function fetchList(query) {
 
 export function fetchContent(id) {
   return request({
-    url: '/centripetal-web-admin/content/detail',
+    url: '/system/content/detail',
     method: 'get',
     params: { id }
   })
@@ -18,7 +18,7 @@ export function fetchContent(id) {
 
 export function createContent(data) {
   return request({
-    url: '/centripetal-web-admin/content/create',
+    url: '/system/content/create',
     method: 'post',
     data
   })
@@ -26,7 +26,7 @@ export function createContent(data) {
 
 export function updateContent(data) {
   return request({
-    url: '/centripetal-web-admin/content/update',
+    url: '/system/content/update',
     method: 'post',
     data
   })
@@ -34,7 +34,7 @@ export function updateContent(data) {
 
 export function deleteContent(id) {
   return request({
-    url: '/centripetal-web-admin/content/delete',
+    url: '/system/content/delete',
     method: 'post',
     params: { id }
   })

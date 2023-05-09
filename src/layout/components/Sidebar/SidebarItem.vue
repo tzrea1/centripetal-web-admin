@@ -51,7 +51,7 @@ export default {
     }
   },
   data() {
-    // To fix https://github.com/PanJiaChen/centripetal-web-admin/issues/237
+    // To fix https://github.com/PanJiaChen/system/issues/237
     // TODO: refactor with render function
     this.onlyOneChild = null
     return {}

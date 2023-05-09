@@ -80,10 +80,10 @@ export default {
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
+        console.log(this.response)
         this.groups = response.data.items
         this.total = response.data.total
         this.listLoading = false
-        console.log(this.groups)
       })
     },
 

@@ -16,10 +16,10 @@
               Home
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/centripetal-web-admin/">
+          <a target="_blank" href="https://github.com/PanJiaChen/system/">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://panjiachen.github.io/centripetal-web-admin-site/#/">
+          <a target="_blank" href="https://panjiachen.github.io/system-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">

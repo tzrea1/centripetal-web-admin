@@ -8,7 +8,7 @@ import Layout from '@/layout'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/centripetal-web-admin-site/guide/essentials/router-and-nav.html
+ * Detail see: https://panjiachen.github.io/system-site/guide/essentials/router-and-nav.html
  *
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
  * alwaysShow: true               if set true, will always show the root menu
@@ -31,6 +31,17 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect')
+      }
+    ]
+  },
   {
     path: '/login',
     component: () => import('@/views/login/index'),
@@ -183,49 +194,49 @@ export const constantRoutes = [
       {
         path: 'notice',
         component: () => import('@/views/system/notice/index'),
-        name: 'Notice',
+        name: 'NoticeManagement',
         meta: { title: '通知管理', icon: 'el-icon-message-solid' }
       },
       {
         path: 'group',
         component: () => import('@/views/system/group/index'),
-        name: 'Group',
+        name: 'GroupManagement',
         meta: { title: '小组管理', icon: 'el-icon-menu' }
       },
       {
         path: 'content',
         component: () => import('@/views/system/content/index'),
-        name: 'Content',
+        name: 'ContentManagement',
         meta: { title: '党史学习内容', icon: 'el-icon-folder' }
       },
       {
         path: 'content-adt',
         component: () => import('@/views/system/content-adt/index'),
-        name: 'Content-adt',
+        name: 'Content-adt-Management',
         meta: { title: '学习内容审核', icon: 'el-icon-folder-checked' }
       },
       {
         path: 'content-rec',
         component: () => import('@/views/system/content-rec/index'),
-        name: 'Content-rec',
+        name: 'Content-rec-Management',
         meta: { title: '学习记录管理', icon: 'el-icon-finished' }
       },
       {
         path: 'contest',
         component: () => import('@/views/system/contest/index'),
-        name: 'Contest',
+        name: 'Contest-Management',
         meta: { title: '党史答题竞赛', icon: 'el-icon-document' }
       },
       {
         path: 'contest-adt',
         component: () => import('@/views/system/contest-adt/index'),
-        name: 'Contest-adt',
+        name: 'Contest-adt-Management',
         meta: { title: '答题竞赛审核', icon: 'el-icon-document-checked' }
       },
       {
         path: 'contest-rec',
         component: () => import('@/views/system/contest-rec/index'),
-        name: 'Contest-rec',
+        name: 'Contest-rec-Management',
         meta: { title: '答题记录管理', icon: 'el-icon-finished' }
       }
     ]

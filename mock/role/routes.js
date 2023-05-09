@@ -515,7 +515,7 @@ const asyncRoutes = [
     component: 'layout/Layout',
     children: [
       {
-        path: 'https://github.com/PanJiaChen/centripetal-web-admin',
+        path: 'https://github.com/PanJiaChen/system',
         meta: { title: 'External Link', icon: 'link' }
       }
     ]

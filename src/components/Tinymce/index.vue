@@ -10,7 +10,7 @@
 <script>
 /**
  * docs:
- * https://panjiachen.github.io/centripetal-web-admin-site/feature/component/rich-editor.html#tinymce
+ * https://panjiachen.github.io/system-site/feature/component/rich-editor.html#tinymce
  */
 import editorImage from './components/EditorImage'
 import plugins from './plugins'

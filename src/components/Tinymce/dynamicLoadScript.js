@@ -1,7 +1,7 @@
 let callbacks = []
 
 function loadedTinymce() {
-  // to fixed https://github.com/PanJiaChen/centripetal-web-admin/issues/2144
+  // to fixed https://github.com/PanJiaChen/system/issues/2144
   // check is successfully downloaded script
   return window.tinymce
 }

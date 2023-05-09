@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(query) {
   return request({
-    url: '/centripetal-web-admin/group/list',
+    url: '/system/group/list',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function fetchList(query) {
 
 export function fetchInfo(id) {
   return request({
-    url: '/centripetal-web-admin/group/info',
+    url: '/system/group/info',
     method: 'get',
     params: { id }
   })
@@ -18,7 +18,7 @@ export function fetchInfo(id) {
 
 export function createGroup(data) {
   return request({
-    url: '/centripetal-web-admin/group/create',
+    url: '/system/group/create',
     method: 'post',
     data
   })
@@ -26,7 +26,7 @@ export function createGroup(data) {
 
 export function deleteGroup(data) {
   return request({
-    url: '/centripetal-web-admin/group/delete',
+    url: '/system/group/delete',
     method: 'post',
     data
   })
@@ -35,7 +35,7 @@ export function deleteGroup(data) {
 // 小组信息
 export function deleteMember(data) {
   return request({
-    url: '/centripetal-web-admin/group/id/delete/memberid',
+    url: '/system/group/id/delete/memberid',
     method: 'post',
     data
   })
@@ -43,7 +43,7 @@ export function deleteMember(data) {
 
 export function addMember(data) {
   return request({
-    url: '/centripetal-web-admin/group/id/addmember',
+    url: '/system/group/id/addmember',
     method: 'post',
     data
   })
@@ -51,7 +51,7 @@ export function addMember(data) {
 
 export function postNotification(data) {
   return request({
-    url: '/centripetal-web-admin/group/notice',
+    url: '/system/group/notice',
     method: 'post',
     data
   })
@@ -59,7 +59,7 @@ export function postNotification(data) {
 
 export function fetchNotifications(id) {
   return request({
-    url: '/centripetal-web-admin/group/notice',
+    url: '/system/group/notice',
     method: 'get',
     params: { id }
   })

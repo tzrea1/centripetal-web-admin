@@ -14,7 +14,7 @@ for (let i = 0; i < count; i++) {
       creator_name:"@first",
       leader_name: "@first",
       members_count: "@integer(1, 50)",
-      created_at: "@date('yyyy-MM-dd')", 
+      created_at: "@date('yyyy-MM-dd')",
     })
   );
 }
@@ -49,7 +49,7 @@ for (let i = 0; i < noticesCount; i++) {
 
 module.exports = [
   {
-    url: "/centripetal-web-admin/group/list",
+    url: "/system/group/list",
     type: "get",
     response: (config) => {
       const { page = 1, limit = 10, sort } = config.query;
@@ -75,7 +75,7 @@ module.exports = [
   },
 
   {
-    url: "/centripetal-web-admin/group/info",
+    url: "/system/group/info",
     type: "get",
     response: (config) => {
       const { groupId } = config.query;
@@ -87,7 +87,7 @@ module.exports = [
                     members: Members,
                   },
               }
-  
+
     //   for (const group of List) {
     //     if (group.id === +groupId) {
     //       return {
@@ -118,7 +118,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/group/create',
+    url: '/system/group/create',
     type: 'post',
     response: _ => {
       return {
@@ -129,7 +129,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/group/delete',
+    url: '/system/group/delete',
     type: 'post',
     response: _ => {
       return {
@@ -139,7 +139,7 @@ module.exports = [
     }
   },
   {
-    url: '/centripetal-web-admin/group/notice',
+    url: '/system/group/notice',
     type: 'post',
     response: _ => {
       return {
@@ -150,18 +150,18 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/group/notice',
+    url: '/system/group/notice',
     type: 'get',
     response: (config) => {
         const { groupId, page = 1, limit = 50 } = config.query;
         console.log(groupId);
-  
+
         let mockList = noticesList;
-  
+
         const pageList = mockList.filter(
           (item, index) => index < limit * page && index >= limit * (page - 1)
         );
-  
+
         return {
           code: 20000,
           data: {
