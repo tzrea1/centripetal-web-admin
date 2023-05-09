@@ -16,8 +16,12 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from '@/utils/centripetal'
+
 // 富文本组件
 import Editor from './components/Editor/index.vue'
+
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import '@yzfe/svgicon/lib/svgicon.css'
 
 /**
  * If you don't want to use mock-server
@@ -50,6 +54,8 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
+Vue.component('Icon', VueSvgIcon)
 
 new Vue({
   el: '#app',
