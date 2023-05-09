@@ -13,7 +13,7 @@ NameList.push({ name: 'mock-Pan' })
 module.exports = [
   // username search
   {
-    url: '/centripetal-web-admin/search/user',
+    url: '/system/search/user',
     type: 'get',
     response: config => {
       const { name } = config.query
@@ -30,7 +30,7 @@ module.exports = [
 
   // transaction list
   {
-    url: '/centripetal-web-admin/transaction/list',
+    url: '/system/transaction/list',
     type: 'get',
     response: _ => {
       return {

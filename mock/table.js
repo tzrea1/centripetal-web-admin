@@ -13,7 +13,7 @@ const data = Mock.mock({
 
 module.exports = [
   {
-    url: '/centripetal-web-admin/table/list',
+    url: '/system/table/list',
     type: 'get',
     response: config => {
       const items = data.items

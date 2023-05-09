@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(query) {
   return request({
-    url: '/centripetal-web-admin/contest/list',
+    url: '/system/contest/list',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function fetchList(query) {
 
 export function fetchContest(id) {
   return request({
-    url: '/centripetal-web-admin/contest/detail',
+    url: '/system/contest/detail',
     method: 'get',
     params: { id }
   })
@@ -18,7 +18,7 @@ export function fetchContest(id) {
 
 export function fetchPv(pv) {
   return request({
-    url: '/centripetal-web-admin/contest/pv',
+    url: '/system/contest/pv',
     method: 'get',
     params: { pv }
   })
@@ -26,7 +26,7 @@ export function fetchPv(pv) {
 
 export function createContest(data) {
   return request({
-    url: '/centripetal-web-admin/contest/create',
+    url: '/system/contest/create',
     method: 'post',
     data
   })
@@ -34,7 +34,7 @@ export function createContest(data) {
 
 export function editContest(data) {
   return request({
-    url: '/centripetal-web-admin/contest/edit',
+    url: '/system/contest/edit',
     method: 'post',
     data
   })
@@ -42,7 +42,7 @@ export function editContest(data) {
 
 export function updateContest(data) {
   return request({
-    url: '/centripetal-web-admin/contest/update',
+    url: '/system/contest/update',
     method: 'post',
     data
   })
@@ -50,7 +50,7 @@ export function updateContest(data) {
 
 export function deleteContest(data) {
   return request({
-    url: '/centripetal-web-admin/contest/delete',
+    url: '/system/contest/delete',
     method: 'post',
     data
   })

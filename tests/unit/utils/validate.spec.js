@@ -7,9 +7,9 @@ describe('Utils:validate', () => {
     expect(validUsername('xxxx')).toBe(false)
   })
   it('isExternal', () => {
-    expect(isExternal('https://github.com/PanJiaChen/centripetal-web-admin')).toBe(true)
-    expect(isExternal('http://github.com/PanJiaChen/centripetal-web-admin')).toBe(true)
-    expect(isExternal('github.com/PanJiaChen/centripetal-web-admin')).toBe(false)
+    expect(isExternal('https://github.com/PanJiaChen/system')).toBe(true)
+    expect(isExternal('http://github.com/PanJiaChen/system')).toBe(true)
+    expect(isExternal('github.com/PanJiaChen/system')).toBe(false)
     expect(isExternal('/dashboard')).toBe(false)
     expect(isExternal('./dashboard')).toBe(false)
     expect(isExternal('dashboard')).toBe(false)

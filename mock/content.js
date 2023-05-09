@@ -30,7 +30,7 @@ for (let i = 0; i < count; i++) {
 
 module.exports = [
   {
-    url: '/centripetal-web-admin/content/list',
+    url: '/system/content/list',
     type: 'get',
     response: config => {
       const { title, page = 1, limit = 20, sort } = config.query
@@ -57,7 +57,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/content/detail',
+    url: '/system/content/detail',
     type: 'get',
     response: config => {
       const { id } = config.query
@@ -73,7 +73,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/content/create',
+    url: '/system/content/create',
     type: 'post',
     response: _ => {
       return {
@@ -84,7 +84,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/content/update',
+    url: '/system/content/update',
     type: 'post',
     response: _ => {
       return {
@@ -95,7 +95,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/content/delete',
+    url: '/system/content/delete',
     type: 'post',
     response: _ => {
       return {
@@ -106,7 +106,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/content/fileupload',
+    url: '/system/content/fileupload',
     type: 'post',
     response: config => {
       console.log(config)

@@ -40,7 +40,7 @@ function generateQuestions() {
 
 module.exports = [
   {
-    url: '/centripetal-web-admin/contest/list',
+    url: '/system/contest/list',
     type: 'get',
     response: config => {
       const { title, page = 1, limit = 20, sort } = config.query
@@ -67,7 +67,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/contest/detail',
+    url: '/system/contest/detail',
     type: 'get',
     response: config => {
       const { id } = config.query
@@ -87,7 +87,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/contest/create',
+    url: '/system/contest/create',
     type: 'post',
     response: _ => {
       return {
@@ -98,7 +98,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/contest/update',
+    url: '/system/contest/update',
     type: 'post',
     response: _ => {
       return {
@@ -109,7 +109,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/contest/delete',
+    url: '/system/contest/delete',
     type: 'post',
     response: _ => {
       return {

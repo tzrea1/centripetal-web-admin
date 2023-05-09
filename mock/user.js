@@ -41,7 +41,7 @@ const users = {
 module.exports = [
   // user login
   {
-    url: '/centripetal-web-admin/user/login',
+    url: '/system/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -63,7 +63,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/user/info\.*',
+    url: '/system/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -86,7 +86,7 @@ module.exports = [
 
   // user logout
   {
-    url: '/centripetal-web-admin/user/logout',
+    url: '/system/user/logout',
     type: 'post',
     response: _ => {
       return {
@@ -96,7 +96,7 @@ module.exports = [
     }
   },
   {
-    url: '/centripetal-web-admin/user/list',
+    url: '/system/user/list',
     type: 'get',
     response: config => {
       const { realname, page = 1, limit = 20, sort } = config.query
@@ -122,7 +122,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/user/detail',
+    url: '/system/user/detail',
     type: 'get',
     response: config => {
       const { id } = config.query
@@ -142,7 +142,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/user/create',
+    url: '/system/user/create',
     type: 'post',
     response: _ => {
       return {
@@ -153,7 +153,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/user/update',
+    url: '/system/user/update',
     type: 'post',
     response: _ => {
       return {
@@ -164,7 +164,7 @@ module.exports = [
   },
 
   {
-    url: '/centripetal-web-admin/user/delete',
+    url: '/system/user/delete',
     type: 'post',
     response: _ => {
       return {

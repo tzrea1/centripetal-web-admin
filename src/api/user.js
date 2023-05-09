@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/centripetal-web-admin/user/login',
+    url: '/system/user/login',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/centripetal-web-admin/user/info',
+    url: '/system/user/info',
     method: 'get',
     params: { token }
   })
@@ -18,14 +18,14 @@ export function getInfo(token) {
 
 export function logout() {
   return request({
-    url: '/centripetal-web-admin/user/logout',
+    url: '/system/user/logout',
     method: 'post'
   })
 }
 
 export function fetchList(query) {
   return request({
-    url: '/centripetal-web-admin/user/list',
+    url: '/system/user/list',
     method: 'get',
     params: query
   })
@@ -33,7 +33,7 @@ export function fetchList(query) {
 
 export function fetchUser(id) {
   return request({
-    url: '/centripetal-web-admin/user/detail',
+    url: '/system/user/detail',
     method: 'get',
     params: { id }
   })
@@ -41,7 +41,7 @@ export function fetchUser(id) {
 
 export function createUser(data) {
   return request({
-    url: '/centripetal-web-admin/user/create',
+    url: '/system/user/create',
     method: 'post',
     data
   })
@@ -49,7 +49,7 @@ export function createUser(data) {
 
 export function editUser(data) {
   return request({
-    url: '/centripetal-web-admin/user/edit',
+    url: '/system/user/edit',
     method: 'post',
     data
   })
@@ -57,7 +57,7 @@ export function editUser(data) {
 
 export function updateUser(data) {
   return request({
-    url: '/centripetal-web-admin/user/update',
+    url: '/system/user/update',
     method: 'post',
     data
   })
@@ -65,7 +65,7 @@ export function updateUser(data) {
 
 export function deleteUser(data) {
   return request({
-    url: '/centripetal-web-admin/user/delete',
+    url: '/system/user/delete',
     method: 'post',
     data
   })
