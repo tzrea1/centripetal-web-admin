@@ -298,6 +298,25 @@ export const constantRoutes = [
       meta: { title: '接口文档', icon: 'document' }
     }]
   },
+  {
+    path: '/test/',
+    component: Layout,
+    meta: { title: '功能测试' },
+    children: [
+      {
+        path: 'testOss',
+        name: 'testOss',
+        component: () => import('@/views/testOss/index'),
+        meta: { title: 'OSS测试', icon: 'document' }
+      },
+      {
+        path: 'testOss',
+        name: 'testOss',
+        component: () => import('@/views/testOss/index'),
+        meta: { title: 'OSS测试', icon: 'document' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
