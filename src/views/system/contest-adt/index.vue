@@ -1,13 +1,29 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
-      <el-form-item label="审核时间" prop="auditTime">
+      <el-form-item label="审核员id" prop="auditorId">
+        <el-input
+          v-model="queryParams.auditorId"
+          placeholder="请输入审核员id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="活动id" prop="quizActivityId">
+        <el-input
+          v-model="queryParams.quizActivityId"
+          placeholder="请输入活动id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="审核日期" prop="auditTime">
         <el-date-picker
           v-model="queryParams.auditTime"
           clearable
           type="date"
           value-format="yyyy-MM-dd"
-          placeholder="请选择审核时间"
+          placeholder="请选择审核日期"
         />
       </el-form-item>
       <el-form-item>
@@ -65,8 +81,8 @@
     <el-table v-loading="loading" :data="contest-adtList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="审核员id" align="center" prop="auditorId" />
-      <el-table-column label="答题活动id" align="center" prop="quizActivityId" />
-      <el-table-column label="审核时间" align="center" prop="auditTime" width="180">
+      <el-table-column label="活动id" align="center" prop="quizActivityId" />
+      <el-table-column label="审核日期" align="center" prop="auditTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.auditTime, '{y}-{m}-{d}') }}</span>
         </template>
@@ -102,13 +118,13 @@
     <!-- 添加或修改审核员审核答题活动的记录对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="审核时间" prop="auditTime">
+        <el-form-item label="审核日期" prop="auditTime">
           <el-date-picker
             v-model="form.auditTime"
             clearable
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="请选择审核时间"
+            placeholder="请选择审核日期"
           />
         </el-form-item>
       </el-form>
@@ -149,14 +165,22 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        auditorId: null,
+        quizActivityId: null,
         auditTime: null
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
+        auditorId: [
+          { required: true, message: '审核员id不能为空', trigger: 'blur' }
+        ],
+        quizActivityId: [
+          { required: true, message: '活动id不能为空', trigger: 'blur' }
+        ],
         auditTime: [
-          { required: true, message: '审核时间不能为空', trigger: 'blur' }
+          { required: true, message: '审核日期不能为空', trigger: 'blur' }
         ]
       }
     }

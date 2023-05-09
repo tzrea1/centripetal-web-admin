@@ -1,10 +1,18 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
-      <el-form-item label="创建者负责人ID" prop="creatorId">
+      <el-form-item label="小组id" prop="groupId">
+        <el-input
+          v-model="queryParams.groupId"
+          placeholder="请输入小组id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="创建者ID" prop="creatorId">
         <el-input
           v-model="queryParams.creatorId"
-          placeholder="请输入创建者负责人ID"
+          placeholder="请输入创建者ID"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -71,8 +79,8 @@
 
     <el-table v-loading="loading" :data="groupList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="组id，主键" align="center" prop="groupId" />
-      <el-table-column label="创建者负责人ID" align="center" prop="creatorId" />
+      <el-table-column label="小组id" align="center" prop="groupId" />
+      <el-table-column label="创建者ID" align="center" prop="creatorId" />
       <el-table-column label="小组描述" align="center" prop="description" />
       <el-table-column label="组名" align="center" prop="groupname" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -106,8 +114,8 @@
     <!-- 添加或修改小组对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="创建者负责人ID" prop="creatorId">
-          <el-input v-model="form.creatorId" placeholder="请输入创建者负责人ID" />
+        <el-form-item label="创建者ID" prop="creatorId">
+          <el-input v-model="form.creatorId" placeholder="请输入创建者ID" />
         </el-form-item>
         <el-form-item label="小组描述" prop="description">
           <el-input v-model="form.description" type="textarea" placeholder="请输入内容" />
@@ -153,8 +161,8 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        groupId: null,
         creatorId: null,
-        description: null,
         groupname: null
       },
       // 表单参数
@@ -162,7 +170,7 @@ export default {
       // 表单校验
       rules: {
         creatorId: [
-          { required: true, message: '创建者负责人ID不能为空', trigger: 'blur' }
+          { required: true, message: '创建者ID不能为空', trigger: 'blur' }
         ],
         groupname: [
           { required: true, message: '组名不能为空', trigger: 'blur' }

@@ -1,6 +1,14 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
+      <el-form-item label="通知id" prop="noticeId">
+        <el-input
+          v-model="queryParams.noticeId"
+          placeholder="请输入通知id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="组长id" prop="userId">
         <el-input
           v-model="queryParams.userId"
@@ -72,7 +80,7 @@
 
     <el-table v-loading="loading" :data="noticeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="小组通知id" align="center" prop="noticeId" />
+      <el-table-column label="通知id" align="center" prop="noticeId" />
       <el-table-column label="组长id" align="center" prop="userId" />
       <el-table-column label="通知内容" align="center" prop="content" />
       <el-table-column label="发布时间" align="center" prop="publishTime" width="180">
@@ -164,8 +172,8 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        noticeId: null,
         userId: null,
-        content: null,
         publishTime: null
       },
       // 表单参数
@@ -177,9 +185,6 @@ export default {
         ],
         content: [
           { required: true, message: '通知内容不能为空', trigger: 'blur' }
-        ],
-        publishTime: [
-          { required: true, message: '发布时间不能为空', trigger: 'blur' }
         ]
       }
     }

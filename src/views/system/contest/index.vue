@@ -1,34 +1,18 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
-      <el-form-item label="创建此答题活动的负责人id" prop="creatorId">
+      <el-form-item label="创建者id" prop="creatorId">
         <el-input
           v-model="queryParams.creatorId"
-          placeholder="请输入创建此答题活动的负责人id"
+          placeholder="请输入创建者id"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="答题活动名称" prop="title">
+      <el-form-item label="活动名称" prop="title">
         <el-input
           v-model="queryParams.title"
-          placeholder="请输入答题活动名称"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="答题时长" prop="timeLimit">
-        <el-input
-          v-model="queryParams.timeLimit"
-          placeholder="请输入答题时长"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="总分值" prop="totalPoints">
-        <el-input
-          v-model="queryParams.totalPoints"
-          placeholder="请输入总分值"
+          placeholder="请输入活动名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -57,22 +41,6 @@
           type="date"
           value-format="yyyy-MM-dd"
           placeholder="请选择结束时间"
-        />
-      </el-form-item>
-      <el-form-item label="合格线" prop="acceptanceLine">
-        <el-input
-          v-model="queryParams.acceptanceLine"
-          placeholder="请输入合格线"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="题目量" prop="quizNum">
-        <el-input
-          v-model="queryParams.quizNum"
-          placeholder="请输入题目量"
-          clearable
-          @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item>
@@ -130,10 +98,10 @@
     <el-table v-loading="loading" :data="contestList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="答题活动id" align="center" prop="quizActivityId" />
-      <el-table-column label="创建此答题活动的负责人id" align="center" prop="creatorId" />
-      <el-table-column label="答题活动名称" align="center" prop="title" />
-      <el-table-column label="答题时长" align="center" prop="timeLimit" />
-      <el-table-column label="答题活动描述" align="center" prop="discription" />
+      <el-table-column label="创建者id" align="center" prop="creatorId" />
+      <el-table-column label="活动名称" align="center" prop="title" />
+      <el-table-column label="时长限制" align="center" prop="timeLimit" />
+      <el-table-column label="活动描述" align="center" prop="discription" />
       <el-table-column label="总分值" align="center" prop="totalPoints" />
       <el-table-column label="状态" align="center" prop="state" />
       <el-table-column label="开始时间" align="center" prop="startTime" width="180">
@@ -179,16 +147,16 @@
     <!-- 添加或修改答题活动对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="创建此答题活动的负责人id" prop="creatorId">
-          <el-input v-model="form.creatorId" placeholder="请输入创建此答题活动的负责人id" />
+        <el-form-item label="创建者id" prop="creatorId">
+          <el-input v-model="form.creatorId" placeholder="请输入创建者id" />
         </el-form-item>
-        <el-form-item label="答题活动名称" prop="title">
-          <el-input v-model="form.title" placeholder="请输入答题活动名称" />
+        <el-form-item label="活动名称" prop="title">
+          <el-input v-model="form.title" placeholder="请输入活动名称" />
         </el-form-item>
-        <el-form-item label="答题时长" prop="timeLimit">
-          <el-input v-model="form.timeLimit" placeholder="请输入答题时长" />
+        <el-form-item label="时长限制" prop="timeLimit">
+          <el-input v-model="form.timeLimit" placeholder="请输入时长限制" />
         </el-form-item>
-        <el-form-item label="答题活动描述" prop="discription">
+        <el-form-item label="活动描述" prop="discription">
           <el-input v-model="form.discription" type="textarea" placeholder="请输入内容" />
         </el-form-item>
         <el-form-item label="总分值" prop="totalPoints">
@@ -295,30 +263,25 @@ export default {
         pageSize: 10,
         creatorId: null,
         title: null,
-        timeLimit: null,
-        discription: null,
-        totalPoints: null,
         state: null,
         startTime: null,
-        endTime: null,
-        acceptanceLine: null,
-        quizNum: null
+        endTime: null
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
         creatorId: [
-          { required: true, message: '创建此答题活动的负责人id不能为空', trigger: 'blur' }
+          { required: true, message: '创建者id不能为空', trigger: 'blur' }
         ],
         title: [
-          { required: true, message: '答题活动名称不能为空', trigger: 'blur' }
+          { required: true, message: '活动名称不能为空', trigger: 'blur' }
         ],
         timeLimit: [
-          { required: true, message: '答题时长不能为空', trigger: 'blur' }
+          { required: true, message: '时长限制不能为空', trigger: 'blur' }
         ],
         discription: [
-          { required: true, message: '答题活动描述不能为空', trigger: 'blur' }
+          { required: true, message: '活动描述不能为空', trigger: 'blur' }
         ],
         totalPoints: [
           { required: true, message: '总分值不能为空', trigger: 'blur' }

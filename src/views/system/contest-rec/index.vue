@@ -1,6 +1,22 @@
 <template>
   <div class="app-container">
     <el-form v-show="showSearch" ref="queryForm" :model="queryParams" size="small" :inline="true" label-width="68px">
+      <el-form-item label="用户id" prop="userId">
+        <el-input
+          v-model="queryParams.userId"
+          placeholder="请输入用户id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="活动id" prop="quizActivityId">
+        <el-input
+          v-model="queryParams.quizActivityId"
+          placeholder="请输入活动id"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="得分" prop="gotScores">
         <el-input
           v-model="queryParams.gotScores"
@@ -9,36 +25,18 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="答题开始时间" prop="startTime">
-        <el-date-picker
-          v-model="queryParams.startTime"
-          clearable
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择答题开始时间"
-        />
-      </el-form-item>
-      <el-form-item label="答题结束时间" prop="endTime">
-        <el-date-picker
-          v-model="queryParams.endTime"
-          clearable
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择答题结束时间"
-        />
-      </el-form-item>
-      <el-form-item label="状态：是否结束了本次答题" prop="activityState">
+      <el-form-item label="是否结束" prop="activityState">
         <el-input
           v-model="queryParams.activityState"
-          placeholder="请输入状态：是否结束了本次答题"
+          placeholder="请输入是否结束"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="是否通过合格线" prop="isPassed">
+      <el-form-item label="是否通过" prop="isPassed">
         <el-input
           v-model="queryParams.isPassed"
-          placeholder="请输入是否通过合格线"
+          placeholder="请输入是否通过"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -98,7 +96,7 @@
     <el-table v-loading="loading" :data="contest-recList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="用户id" align="center" prop="userId" />
-      <el-table-column label="答题活动id" align="center" prop="quizActivityId" />
+      <el-table-column label="活动id" align="center" prop="quizActivityId" />
       <el-table-column label="得分" align="center" prop="gotScores" />
       <el-table-column label="答题开始时间" align="center" prop="startTime" width="180">
         <template slot-scope="scope">
@@ -110,8 +108,8 @@
           <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="状态：是否结束了本次答题" align="center" prop="activityState" />
-      <el-table-column label="是否通过合格线" align="center" prop="isPassed" />
+      <el-table-column label="是否结束" align="center" prop="activityState" />
+      <el-table-column label="是否通过" align="center" prop="isPassed" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -164,11 +162,11 @@
             placeholder="请选择答题结束时间"
           />
         </el-form-item>
-        <el-form-item label="状态：是否结束了本次答题" prop="activityState">
-          <el-input v-model="form.activityState" placeholder="请输入状态：是否结束了本次答题" />
+        <el-form-item label="是否结束" prop="activityState">
+          <el-input v-model="form.activityState" placeholder="请输入是否结束" />
         </el-form-item>
-        <el-form-item label="是否通过合格线" prop="isPassed">
-          <el-input v-model="form.isPassed" placeholder="请输入是否通过合格线" />
+        <el-form-item label="是否通过" prop="isPassed">
+          <el-input v-model="form.isPassed" placeholder="请输入是否通过" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -208,9 +206,9 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        userId: null,
+        quizActivityId: null,
         gotScores: null,
-        startTime: null,
-        endTime: null,
         activityState: null,
         isPassed: null
       },
@@ -218,6 +216,12 @@ export default {
       form: {},
       // 表单校验
       rules: {
+        userId: [
+          { required: true, message: '用户id不能为空', trigger: 'blur' }
+        ],
+        quizActivityId: [
+          { required: true, message: '活动id不能为空', trigger: 'blur' }
+        ],
         gotScores: [
           { required: true, message: '得分不能为空', trigger: 'blur' }
         ],
