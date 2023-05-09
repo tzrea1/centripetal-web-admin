@@ -24,6 +24,12 @@ import Editor from './components/Editor/index.vue';
 // 自定义表格工具组件
 import RightToolbar from './components/RightToolbar/index.vue'
 
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import '@yzfe/svgicon/lib/svgicon.css'
+
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import '@yzfe/svgicon/lib/svgicon.css'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -58,6 +64,8 @@ Vue.use(ElementUI, { locale })
 Vue.use(plugins)
 
 Vue.config.productionTip = false
+
+Vue.component('Icon', VueSvgIcon)
 
 new Vue({
   el: '#app',
