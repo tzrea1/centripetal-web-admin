@@ -159,6 +159,52 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/sceneManage',
+    component: Layout,
+    redirect: '/sceneManage/scene',
+    name: 'SceneManage',
+    meta: { title: '场景体验', icon: 'el-icon-s-promotion' },
+    children: [
+      // {
+      //   path: 'create',
+      //   component: () => import('@/views/contest/create'),
+      //   name: 'CreateContest',
+      //   meta: { title: '创建答题竞赛', icon: 'el-icon-message-solid' }
+      // },
+      // {
+      //   path: 'edit/:id(\\d+)',
+      //   component: () => import('@/views/contest/edit'),
+      //   name: 'EditContest',
+      //   meta: { title: '修改答题竞赛', noCache: true, activeMenu: '/contest/list' },
+      //   hidden: true
+      // },
+      // {
+      //   path: 'list',
+      //   component: () => import('@/views/contest/list'),
+      //   name: 'ContestList',
+      //   meta: { title: '答题竞赛列表', icon: 'el-icon-s-order' }
+      // }
+      {
+        path: 'scene',
+        component: () => import('@/views/system/scene/index'),
+        name: 'Scene-Management',
+        meta: { title: '场景管理', icon: 'el-icon-document' }
+      },
+      {
+        path: 'sceneFile',
+        component: () => import('@/views/system/scene-file/index'),
+        name: 'SceneFile-Management',
+        meta: { title: '场景文件管理', icon: 'el-icon-document' }
+      },
+      {
+        path: 'userScene',
+        component: () => import('@/views/system/user-scene/index'),
+        name: 'UserScene-Management',
+        meta: { title: '场景体验记录', icon: 'el-icon-s-order' }
+      }
+    ]
+  },
 
   {
     path: '/group',
@@ -204,30 +250,48 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/user',
+    path: '/management',
     component: Layout,
-    redirect: '/user/list',
-    name: 'User',
+    redirect: '/management/user',
+    name: 'Management',
     meta: { title: '用户管理', icon: 'user' },
     children: [
+      // {
+      //   path: 'create',
+      //   component: () => import('@/views/user/create'),
+      //   name: 'CreateUser',
+      //   meta: { title: '创建用户信息', icon: 'el-icon-s-check' }
+      // },
+      // {
+      //   path: 'edit/:id(\\d+)',
+      //   component: () => import('@/views/user/edit'),
+      //   name: 'EditUser',
+      //   meta: { title: '修改用户信息', noCache: true, activeMenu: '/user/list' },
+      //   hidden: true
+      // },
+      // {
+      //   path: 'list',
+      //   component: () => import('@/views/user/list'),
+      //   name: 'UserList',
+      //   meta: { title: '用户信息列表', icon: 'el-icon-s-order' }
+      // }
       {
-        path: 'create',
-        component: () => import('@/views/user/create'),
-        name: 'CreateUser',
-        meta: { title: '创建用户信息', icon: 'el-icon-s-check' }
+        path: 'user',
+        component: () => import('@/views/system/user/index'),
+        name: 'User',
+        meta: { title: '用户信息', icon: 'el-icon-s-check' }
       },
       {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/user/edit'),
-        name: 'EditUser',
-        meta: { title: '修改用户信息', noCache: true, activeMenu: '/user/list' },
-        hidden: true
+        path: 'auditor',
+        component: () => import('@/views/system/auditor/index'),
+        name: 'Auditor',
+        meta: { title: '审核员信息', icon: 'el-icon-s-check' }
       },
       {
-        path: 'list',
-        component: () => import('@/views/user/list'),
-        name: 'UserList',
-        meta: { title: '用户信息列表', icon: 'el-icon-s-order' }
+        path: 'role',
+        component: () => import('@/views/system/role/index'),
+        name: 'Role',
+        meta: { title: '系统角色', icon: 'el-icon-s-check' }
       }
     ]
   },

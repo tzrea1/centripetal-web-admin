@@ -43,7 +43,7 @@ export default {
     },
     menubar: {
       type: String,
-      default: 'file edit insert view format table'
+      default: 'scene-file edit insert view format table'
     },
     height: {
       type: [Number, String],
@@ -175,7 +175,7 @@ export default {
         //     const formData = new FormData();
         //     formData.append('token', response.data.qiniu_token);
         //     formData.append('key', response.data.qiniu_key);
-        //     formData.append('file', blobInfo.blob(), url);
+        //     formData.append('scene-file', blobInfo.blob(), url);
         //     upload(formData).then(() => {
         //       success(url);
         //       progress(100);
