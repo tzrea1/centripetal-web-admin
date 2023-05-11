@@ -267,7 +267,7 @@ export default {
       if (row.auditorId) {
         auditorIds = [{ auditorId: row.auditorId, quizActivityId: row.quizActivityId }]
       }
-      this.$modal.confirm('是否确认删除审核员${auditorId}审核答题活动的记录编号为"${quizActivityId}"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除所选数据项？').then(function() {
         return delContest_adt(auditorIds)
       }).then(() => {
         this.getList()

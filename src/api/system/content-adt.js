@@ -10,10 +10,11 @@ export function listContent_adt(query) {
 }
 
 // 查询审核员审核党史内容学习的记录详细
-export function getContent_adt(auditorId) {
+export function getContent_adt(query) {
   return request({
-    url: '/system/content-adt/' + auditorId,
-    method: 'get'
+    url: '/system/content-adt',
+    method: 'get',
+    params: query
   })
 }
 
@@ -36,9 +37,10 @@ export function updateContent_adt(data) {
 }
 
 // 删除审核员审核党史内容学习的记录
-export function delContent_adt(auditorId) {
+export function delContent_adt(data) {
   return request({
-    url: '/system/content-adt/' + auditorId,
-    method: 'delete'
+    url: '/system/content-adt',
+    method: 'delete',
+    data: data
   })
 }
