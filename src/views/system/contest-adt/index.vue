@@ -71,7 +71,7 @@
           @click="handleExport"
         >导出</el-button>
       </el-col>
-      <right-toolbar :show-search.sync="showSearch" @queryTable="getList" style="margin-left: 330px;;width:100px"/>
+      <right-toolbar :show-search.sync="showSearch" style="margin-left: 330px;;width:100px" @queryTable="getList" />
     </el-row>
 
     <el-table v-loading="loading" :data="contest_adtList" @selection-change="handleSelectionChange">
@@ -218,7 +218,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.auditorId)
+      this.ids = selection.map(item => ({ auditorId: item.auditorId, quizActivityId: item.quizActivityId }))
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
@@ -231,8 +231,11 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset()
-      const auditorId = row.auditorId || this.ids
-      getContest_adt(auditorId).then(response => {
+      var key = this.ids[0]
+      if (row.auditorId) {
+        key = { auditorId: row.auditorId, quizActivityId: row.quizActivityId }
+      }
+      getContest_adt(key).then(response => {
         this.form = response.data
         this.open = true
         this.title = '修改审核员审核答题活动的记录'
@@ -260,8 +263,11 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const auditorIds = row.auditorId || this.ids
-      this.$modal.confirm('是否确认删除审核员审核答题活动的记录编号为"' + auditorIds + '"的数据项？').then(function() {
+      var auditorIds = this.ids
+      if (row.auditorId) {
+        auditorIds = [{ auditorId: row.auditorId, quizActivityId: row.quizActivityId }]
+      }
+      this.$modal.confirm('是否确认删除审核员${auditorId}审核答题活动的记录编号为"${quizActivityId}"的数据项？').then(function() {
         return delContest_adt(auditorIds)
       }).then(() => {
         this.getList()

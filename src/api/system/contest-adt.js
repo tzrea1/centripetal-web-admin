@@ -10,10 +10,11 @@ export function listContest_adt(query) {
 }
 
 // 查询审核员审核答题活动的记录详细
-export function getContest_adt(auditorId) {
+export function getContest_adt(query) {
   return request({
-    url: '/system/contest-adt/' + auditorId,
-    method: 'get'
+    url: '/system/contest-adt',
+    method: 'get',
+    params: query
   })
 }
 
@@ -36,9 +37,10 @@ export function updateContest_adt(data) {
 }
 
 // 删除审核员审核答题活动的记录
-export function delContest_adt(auditorId) {
+export function delContest_adt(auditorIds) {
   return request({
-    url: '/system/contest-adt/' + auditorId,
-    method: 'delete'
+    url: '/system/contest-adt',
+    method: 'delete',
+    data: auditorIds
   })
 }
