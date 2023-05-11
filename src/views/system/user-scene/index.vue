@@ -35,7 +35,6 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:user:add']"
           type="primary"
           plain
           icon="el-icon-plus"
@@ -45,7 +44,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:user:edit']"
           type="success"
           plain
           icon="el-icon-edit"
@@ -56,7 +54,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:user:remove']"
           type="danger"
           plain
           icon="el-icon-delete"
@@ -67,7 +64,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          v-hasPermi="['system:user:export']"
           type="warning"
           plain
           icon="el-icon-download"
@@ -75,7 +71,7 @@
           @click="handleExport"
         >导出</el-button>
       </el-col>
-      <right-toolbar :show-search.sync="showSearch" @queryTable="getList" />
+      <right-toolbar :show-search.sync="showSearch" style="margin-left: 330px;;width:100px" @queryTable="getList" />
     </el-row>
 
     <el-table v-loading="loading" :data="userList" @selection-change="handleSelectionChange">
@@ -92,14 +88,12 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
-            v-hasPermi="['system:user:edit']"
             size="mini"
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
           >修改</el-button>
           <el-button
-            v-hasPermi="['system:user:remove']"
             size="mini"
             type="text"
             icon="el-icon-delete"
