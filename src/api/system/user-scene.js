@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询用户虚拟场景间体验关系列表
 export function listUser(query) {
   return request({
-    url: '/system/user/list',
+    url: '/system/scene-user/list',
     method: 'get',
     params: query
   })
@@ -12,7 +12,7 @@ export function listUser(query) {
 // 查询用户虚拟场景间体验关系详细
 export function getUser(userId) {
   return request({
-    url: '/system/user/' + userId,
+    url: '/system/scene-user/' + userId,
     method: 'get'
   })
 }
@@ -20,7 +20,7 @@ export function getUser(userId) {
 // 新增用户虚拟场景间体验关系
 export function addUser(data) {
   return request({
-    url: '/system/user',
+    url: '/system/scene-user',
     method: 'post',
     data: data
   })
@@ -29,7 +29,7 @@ export function addUser(data) {
 // 修改用户虚拟场景间体验关系
 export function updateUser(data) {
   return request({
-    url: '/system/user',
+    url: '/system/scene-user',
     method: 'put',
     data: data
   })
@@ -38,7 +38,7 @@ export function updateUser(data) {
 // 删除用户虚拟场景间体验关系
 export function delUser(userId) {
   return request({
-    url: '/system/user/' + userId,
+    url: '/system/scene-user/' + userId,
     method: 'delete'
   })
 }
