@@ -1,4 +1,8 @@
 module.exports = {
+  testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    url: 'http://localhost/'
+  },
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue'],
   transform: {
     '^.+\\.vue$': 'vue-jest',
@@ -20,5 +24,12 @@ module.exports = {
     'lcov',
     'text-summary'
   ],
-  testURL: 'http://localhost/'
+  reporters: [
+    "default",
+    ["jest-html-reporters", {
+      publicPath: "./test-report",
+      filename: "test-report.html",
+      expand: true
+    }]
+  ]
 }
