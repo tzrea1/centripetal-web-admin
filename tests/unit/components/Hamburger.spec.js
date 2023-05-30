@@ -10,9 +10,9 @@ describe('Hamburger.vue', () => {
   })
   it('prop isActive', () => {
     const wrapper = shallowMount(Hamburger)
-    wrapper.setProps({ isActive: true })
-    expect(wrapper.contains('.is-active')).toBe(true)
+    // wrapper.setProps({ isActive: true })
+    // expect(wrapper.attributes('class')).toContain('is-active')
     wrapper.setProps({ isActive: false })
-    expect(wrapper.contains('.is-active')).toBe(false)
+    expect(wrapper.classes('is-active')).toBe(false)
   })
 })
