@@ -106,6 +106,9 @@
         <el-form-item label="角色权限字符串" prop="roleKey">
           <el-input v-model="form.roleKey" placeholder="请输入角色权限字符串" />
         </el-form-item>
+        <el-form-item label="角色状态(0正常，1停用)" prop="roleKey">
+          <el-input v-model="form.status" placeholder="请输入角色状态" />
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
