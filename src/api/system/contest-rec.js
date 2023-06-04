@@ -10,10 +10,11 @@ export function listContest_rec(query) {
 }
 
 // 查询user用户参与答题活动的关系详细
-export function getContest_rec(userId) {
+export function getContest_rec(query) {
   return request({
-    url: '/system/contest-rec/' + userId,
-    method: 'get'
+    url: '/system/contest-rec',
+    method: 'get',
+    params: query
   })
 }
 
@@ -36,9 +37,10 @@ export function updateContest_rec(data) {
 }
 
 // 删除user用户参与答题活动的关系
-export function delContest_rec(userId) {
+export function delContest_rec(data) {
   return request({
-    url: '/system/contest-rec/' + userId,
-    method: 'delete'
+    url: '/system/contest-rec',
+    method: 'delete',
+    data: data
   })
 }

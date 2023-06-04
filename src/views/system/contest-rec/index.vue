@@ -86,7 +86,7 @@
           @click="handleExport"
         >导出</el-button>
       </el-col>
-      <right-toolbar :show-search.sync="showSearch" @queryTable="getList" style="margin-left: 330px;;width:100px"/>
+      <right-toolbar :show-search.sync="showSearch" style="margin-left: 330px;;width:100px" @queryTable="getList" />
     </el-row>
 
     <el-table v-loading="loading" :data="contest_recList" @selection-change="handleSelectionChange">
@@ -271,7 +271,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.userId)
+      this.ids = selection.map(item => ({ userId: item.userId, quizActivityId: item.quizActivityId }))
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
@@ -284,8 +284,11 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset()
-      const userId = row.userId || this.ids
-      getContest_rec(userId).then(response => {
+      var key = this.ids[0]
+      if (row.userId) {
+        key = { userId: row.userId, quizActivityId: row.quizActivityId }
+      }
+      getContest_rec(key).then(response => {
         this.form = response.data
         this.open = true
         this.title = '修改user用户参与答题活动的关系'
@@ -313,9 +316,12 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const userIds = row.userId || this.ids
-      this.$modal.confirm('是否确认删除user用户参与答题活动的关系编号为"' + userIds + '"的数据项？').then(function() {
-        return delContest_rec(userIds)
+      var key = this.ids
+      if (row.userId) {
+        key = [{ userId: row.userId, quizActivityId: row.quizActivityId }]
+      }
+      this.$modal.confirm('是否确认删除该条数据项？').then(function() {
+        return delContest_rec(key)
       }).then(() => {
         this.getList()
         this.$modal.msgSuccess('删除成功')

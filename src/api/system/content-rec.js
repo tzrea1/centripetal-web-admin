@@ -10,10 +10,11 @@ export function listContent_rec(query) {
 }
 
 // 查询user用户参与党史内容学习的关系详细
-export function getContent_rec(phStudyId) {
+export function getContent_rec(query) {
   return request({
-    url: '/system/content-rec/' + phStudyId,
-    method: 'get'
+    url: '/system/content-rec',
+    method: 'get',
+    params: query
   })
 }
 
@@ -36,9 +37,10 @@ export function updateContent_rec(data) {
 }
 
 // 删除user用户参与党史内容学习的关系
-export function delContent_rec(phStudyId) {
+export function delContent_rec(data) {
   return request({
-    url: '/system/content-rec/' + phStudyId,
-    method: 'delete'
+    url: '/system/content-rec',
+    method: 'delete',
+    data: data
   })
 }

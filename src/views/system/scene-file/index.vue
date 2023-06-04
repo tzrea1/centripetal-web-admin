@@ -51,26 +51,6 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-        >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
           type="warning"
           plain
           icon="el-icon-download"
@@ -129,6 +109,9 @@
         </el-form-item>
         <el-form-item label="文件大小" prop="fileSize">
           <el-input v-model="form.fileSize" placeholder="请输入文件大小" />
+        </el-form-item>
+        <el-form-item label="文件类型" prop="fileType">
+          <el-input v-model="form.fileType" placeholder="请输入文件类型" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

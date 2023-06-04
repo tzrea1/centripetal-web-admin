@@ -14,6 +14,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-input
+
           v-model="loginForm.password"
           type="password"
           auto-complete="off"
@@ -25,6 +26,7 @@
       </el-form-item>
       <el-form-item v-if="captchaEnabled" prop="code">
         <el-input
+          id="input"
           v-model="loginForm.code"
           auto-complete="off"
           placeholder="验证码"
