@@ -36,9 +36,10 @@ export function updateUser(data) {
 }
 
 // 删除用户虚拟场景间体验关系
-export function delUser(userId) {
+export function delUser(data) {
   return request({
-    url: '/system/scene-user/' + userId,
-    method: 'delete'
+    url: '/system/scene-user',
+    method: 'delete',
+    data: data
   })
 }
