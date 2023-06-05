@@ -1,7 +1,6 @@
 <template>
   <div>
     <el-upload
-      v-if="this.type == 'url'"
       ref="upload"
       :action="ossUploadUrl"
       :data="dataObj"
@@ -25,6 +24,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import { getToken } from '@/utils/auth'
 import { policy } from '@/api/oss' // 导入oss相关的api
+import axios from 'axios'
 
 export default {
   name: 'Editor',
@@ -159,19 +159,69 @@ export default {
       })
     },
     handleSave() {
-      const _self = this
+      // console.log("button clicked");
+      // 打印编辑器的格式化内容
+      // console.log(this.Quill.getContents());
+
       const html = this.$refs.editor.children[0].innerHTML
       const blob = new Blob([html], { type: 'text/html;charset=utf-8' })
-      const file = new File([blob], 'content.html')
-      _self.handleBeforeUpload(file).then(() => {
-        _self.$refs.upload.submit()
-      })
+      // console.log(blob); // 输出Blob对象
+
+      const timestamp = new Date().getTime() // 获取当前时间的时间戳
+      const random = Math.floor(Math.random() * 1000) // 获取一个随机数
+      const uniqueFileName = `content_${timestamp}_${random}.html` // 使用时间戳和随机数生成一个唯一的文件名
+
+      const file = new File([blob], uniqueFileName)
+      // console.log(file); // 输出File对象
+
+      this.handleBeforeUpload(file)
+        .then(() => {
+          // console.log("handleSave - handleBeforeUpload Success");
+
+          const formData = new FormData()
+          formData.append('policy', this.dataObj.policy)
+          formData.append('signature', this.dataObj.signature)
+          formData.append('key', this.dataObj.key)
+          formData.append('ossaccessKeyId', this.dataObj.ossaccessKeyId)
+          formData.append('dir', this.dataObj.dir)
+          formData.append('host', this.dataObj.host)
+          formData.append('file', file)
+
+          // formData.append("success_action_status", "200"); // 如果需要的话
+
+          axios
+            .post(this.dataObj.host, formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            })
+            .then((response) => {
+              // console.log("html Upload successful!");
+              // 在这里处理上传成功的情况
+              const url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name
+              // console.log(url);
+              // console.log(response);
+              this.$emit('html-upload-complete', url)
+            })
+            .catch((error) => {
+              console.log('Upload failed!', error)
+              // 在这里处理上传失败的情况
+            })
+        })
+        .catch((err) => {
+          console.log('handleSave - handleUpload Failed', err)
+        })
     },
     handleBeforeUpload(file) {
+      // console.log("handleBeforeUpload - Start");
       const _self = this
       return new Promise((resolve, reject) => {
         policy()
           .then((response) => {
+            console.log(
+              'handleBeforeUpload - policy response received',
+              response
+            )
             _self.dataObj.policy = response.data.policy
             _self.dataObj.signature = response.data.signature
             _self.dataObj.ossaccessKeyId = response.data.accessKeyId
@@ -181,13 +231,16 @@ export default {
             resolve(true)
           })
           .catch((err) => {
-            console.log(err)
+            console.log('handleBeforeUpload - policy request error', err)
             reject(false)
           })
       })
     },
     handleUploadSuccess(res, file) {
+      // console.log("handleUploadSuccess");
       const url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name
+      console.log(url)
+      // console.log(res);
       if (file.name.endsWith('.html')) {
         this.$emit('html-upload-complete', url)
       } else {
@@ -197,19 +250,20 @@ export default {
       // 获取富文本组件实例
       const quill = this.Quill
       // 如果上传成功
-      if (res.code === 200) {
-        // 获取光标所在位置
-        const length = quill.getSelection().index
-        // 插入图片  res.url为服务器返回的图片地址
-        quill.insertEmbed(length, 'image', url)
-        // 调整光标到最后
-        quill.setSelection(length + 1)
-      } else {
-        this.$message.error('图片插入失败')
-      }
+      //   if (res.code === 200) {
+      // 获取光标所在位置
+      const length = quill.getSelection().index
+      // 插入图片  res.url为服务器返回的图片地址
+      quill.insertEmbed(length, 'image', url)
+      // 调整光标到最后
+      quill.setSelection(length + 1)
+      //   } else {
+      //     this.$message.error("图片插入失败");
+      //   }
     },
     handleUploadError() {
-      this.$message.error('图片插入失败')
+      console.log('handleUploadError')
+      this.$message.error('OSS上传失败')
     }
   }
 }
