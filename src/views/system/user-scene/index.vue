@@ -183,7 +183,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.userId)
+      this.ids = selection.map(item => ({ userId: item.userId, sceneId: item.sceneId }))
       this.single = selection.length !== 1
       this.multiple = !selection.length
     },
@@ -225,9 +225,12 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const userIds = row.userId || this.ids
-      this.$modal.confirm('是否确认删除用户虚拟场景间体验关系编号为"' + userIds + '"的数据项？').then(function() {
-        return delUser(userIds)
+      var key = this.ids
+      if (row.userId) {
+        key = [{ userId: row.userId, sceneId: row.sceneId }]
+      }
+      this.$modal.confirm('是否确认删除该条数据项？').then(function() {
+        return delUser(key)
       }).then(() => {
         this.getList()
         this.$modal.msgSuccess('删除成功')
