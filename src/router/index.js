@@ -372,6 +372,12 @@ export const constantRoutes = [
         name: 'testOss',
         component: () => import('@/views/testOss/index'),
         meta: { title: 'OSS测试', icon: 'document' }
+      },
+      {
+        path: 'testhtml',
+        name: 'testhtml',
+        component: () => import('@/views/testhtml/index'),
+        meta: { title: 'html测试', icon: 'document' }
       }
     ]
   },

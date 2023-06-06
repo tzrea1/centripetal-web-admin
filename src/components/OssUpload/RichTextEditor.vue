@@ -240,12 +240,6 @@ export default {
       // console.log("handleUploadSuccess");
       const url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name
       console.log(url)
-      // console.log(res);
-      if (file.name.endsWith('.html')) {
-        this.$emit('html-upload-complete', url)
-      } else {
-        this.$emit('upload-complete', url)
-      }
 
       // 获取富文本组件实例
       const quill = this.Quill
@@ -257,9 +251,6 @@ export default {
       quill.insertEmbed(length, 'image', url)
       // 调整光标到最后
       quill.setSelection(length + 1)
-      //   } else {
-      //     this.$message.error("图片插入失败");
-      //   }
     },
     handleUploadError() {
       console.log('handleUploadError')

@@ -156,9 +156,13 @@
             placeholder="请输入内容"
           />
         </el-form-item>
-        <el-form-item label="状态" prop="state">
+        <!-- <el-form-item label="状态" prop="state">
           <el-input v-model="form.state" placeholder="请输入状态" />
+        </el-form-item> -->
+        <el-form-item label="状态" prop="state">
+          <el-tag type="success">{{ form.state }}</el-tag>
         </el-form-item>
+
         <el-form-item label="预览图" prop="prepicUrl">
           <!-- <el-input v-model="form.prepicUrl" placeholder="请输入预览图url" /> -->
           <single-image-upload
@@ -166,12 +170,11 @@
             @input="updatePrepicUrl"
           />
         </el-form-item>
-        <el-form-item label="内容主体对应html文件url" prop="contentUrl">
-          <el-input
-            v-model="form.contentUrl"
-            placeholder="请输入内容主体对应html文件url"
-          />
+
+        <el-form-item label="内容主体" prop="contentUrl">
+          <rich-text-editor @html-upload-complete="handleHtmlUploadComplete" />
         </el-form-item>
+
         <el-divider content-position="center">党史内容学习文件信息</el-divider>
         <el-row :gutter="10" class="mb8">
           <el-col :span="1.5">
@@ -256,12 +259,14 @@ import {
 } from '@/api/system/content'
 import SingleImageUpload from '@/components/OssUpload/singleImageUpload.vue'
 import singleFileUpload from '@/components/OssUpload/singleFileUpload.vue'
+import RichTextEditor from '@/components/OssUpload/RichTextEditor.vue'
 
 export default {
   name: 'Content',
   components: {
     SingleImageUpload,
-    singleFileUpload
+    singleFileUpload,
+    RichTextEditor
   },
   data() {
     return {
@@ -296,7 +301,9 @@ export default {
         state: null
       },
       // 表单参数
-      form: {},
+      form: {
+        state: 'initialized'
+      },
       // 表单校验
       rules: {
         creatorId: [
@@ -328,6 +335,11 @@ export default {
     this.getList()
   },
   methods: {
+    handleHtmlUploadComplete(fileUrl) {
+      // 在这里处理上传完成后的文件地址
+      this.form.contentUrl = fileUrl
+      console.log('上传完成，文件地址：', fileUrl)
+    },
     updatePrepicUrl(prepicUrl) {
       this.form.prepicUrl = prepicUrl
       console.log(this.form)
@@ -353,7 +365,7 @@ export default {
         creatorId: null,
         title: null,
         description: null,
-        state: null,
+        state: 'initialized',
         prepicUrl: null,
         contentUrl: null
       }
