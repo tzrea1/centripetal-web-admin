@@ -58,6 +58,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="通知id" align="center" prop="noticeId" />
       <el-table-column label="组长id" align="center" prop="userId" />
+      <el-table-column label="通知标题" align="center" prop="title" />
       <el-table-column label="通知内容" align="center" prop="content" />
       <el-table-column label="发布时间" align="center" prop="publishTime" width="180">
         <template slot-scope="scope">
@@ -95,6 +96,9 @@
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="组长id" prop="userId">
           <el-input v-model="form.userId" placeholder="请输入组长id" />
+        </el-form-item>
+        <el-form-item label="通知标题">
+          <el-input v-model="form.title" placeholder="请输入标题" />
         </el-form-item>
         <el-form-item label="通知内容">
           <editor v-model="form.content" :min-height="192" />
@@ -159,6 +163,9 @@ export default {
         ],
         content: [
           { required: true, message: '通知内容不能为空', trigger: 'blur' }
+        ],
+        title: [
+          { required: true, message: '标题不能为空', trigger: 'blur' }
         ]
       }
     }
@@ -186,6 +193,7 @@ export default {
       this.form = {
         noticeId: null,
         userId: null,
+        title: null,
         content: null,
         publishTime: null
       }
