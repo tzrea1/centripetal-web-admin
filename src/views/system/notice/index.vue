@@ -101,7 +101,11 @@
           <el-input v-model="form.title" placeholder="请输入标题" />
         </el-form-item>
         <el-form-item label="通知内容">
-          <editor v-model="form.content" :min-height="192" />
+          <!-- <editor v-model="form.content" :min-height="192" /> -->
+          <rich-text-editor
+            :min-height="192"
+            @html-upload-complete="handleHtmlUploadComplete"
+          />
         </el-form-item>
         <el-form-item label="发布时间" prop="publishTime">
           <el-date-picker
@@ -123,9 +127,13 @@
 
 <script>
 import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/notice'
+import RichTextEditor from '@/components/OssUpload/RichTextEditor.vue'
 
 export default {
   name: 'Notice',
+  components: {
+    RichTextEditor
+  },
   data() {
     return {
       // 遮罩层
@@ -266,6 +274,12 @@ export default {
       this.download('system/notice/export', {
         ...this.queryParams
       }, `notice_${new Date().getTime()}.xlsx`)
+    },
+    /** oss响应操作 */
+    handleHtmlUploadComplete(fileUrl) {
+      // 在这里处理上传完成后的文件地址
+      console.log('上传完成，文件地址：', fileUrl)
+      this.form.content = fileUrl
     }
   }
 }
