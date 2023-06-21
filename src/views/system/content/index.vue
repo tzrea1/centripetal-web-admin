@@ -317,15 +317,15 @@ export default {
       // 可选的文件类型
       fileTypeOptions: [
         {
-          value: '选项1',
+          value: '文档',
           label: '文档'
         },
         {
-          value: '选项2',
+          value: '视频',
           label: '视频'
         },
         {
-          value: '选项3',
+          value: '图片',
           label: '图片'
         }
       ]

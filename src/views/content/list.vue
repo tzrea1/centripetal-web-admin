@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { deleteContent, fetchList } from '@/api/content'
+import { deleteContent, fetchList } from '@/api/system/content'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 
 export default {

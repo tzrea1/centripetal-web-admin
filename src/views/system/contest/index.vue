@@ -77,7 +77,7 @@
       <el-table-column label="创建者id" align="center" prop="creatorId" />
       <el-table-column label="活动名称" align="center" prop="title" />
       <el-table-column label="时长限制" align="center" prop="timeLimit" />
-      <el-table-column label="活动描述" align="center" prop="discription" />
+      <el-table-column label="活动描述" align="center" prop="description" />
       <el-table-column label="总分值" align="center" prop="totalPoints" />
       <el-table-column label="状态" align="center" prop="state" />
       <el-table-column label="开始时间" align="center" prop="startTime" width="180">
@@ -130,8 +130,8 @@
         <el-form-item label="时长限制" prop="timeLimit">
           <el-input v-model="form.timeLimit" placeholder="请输入时长限制" />
         </el-form-item>
-        <el-form-item label="活动描述" prop="discription">
-          <el-input v-model="form.discription" type="textarea" placeholder="请输入内容" />
+        <el-form-item label="活动描述" prop="description">
+          <el-input v-model="form.description" type="textarea" placeholder="请输入内容" />
         </el-form-item>
         <el-form-item label="总分值" prop="totalPoints">
           <el-input v-model="form.totalPoints" placeholder="请输入总分值" />
@@ -175,9 +175,19 @@
         <el-table ref="question" :data="questionList" :row-class-name="rowQuestionIndex" @selection-change="handleQuestionSelectionChange">
           <el-table-column type="selection" width="50" align="center" />
           <el-table-column label="序号" align="center" prop="index" width="50" />
+          <el-table-column label="题目内容" prop="content" width="150">
+            <template slot-scope="scope">
+              <el-input v-model="scope.row.content" placeholder="请输入本题内容" />
+            </template>
+          </el-table-column>
           <el-table-column label="本题分值" prop="questionScore" width="150">
             <template slot-scope="scope">
               <el-input v-model="scope.row.questionScore" placeholder="请输入本题分值" />
+            </template>
+          </el-table-column>
+          <el-table-column label="题目选项" prop="obtions" width="150">
+            <template slot-scope="scope">
+              <el-input v-model="scope.row.options" placeholder="请输入本题选项" />
             </template>
           </el-table-column>
           <el-table-column label="本题正确答案" prop="correctAnswer" width="150">
@@ -188,7 +198,12 @@
           <el-table-column label="题目类型" prop="questionType" width="150">
             <template slot-scope="scope">
               <el-select v-model="scope.row.questionType" placeholder="请选择题目类型">
-                <el-option label="请选择字典生成" value="" />
+                <el-option
+                  v-for="(type, index) in questionTypes"
+                  :key="index"
+                  :label="type.label"
+                  :value="type.value"
+                />
               </el-select>
             </template>
           </el-table-column>
@@ -254,7 +269,7 @@ export default {
         timeLimit: [
           { required: true, message: '时长限制不能为空', trigger: 'blur' }
         ],
-        discription: [
+        description: [
           { required: true, message: '活动描述不能为空', trigger: 'blur' }
         ],
         totalPoints: [
@@ -272,7 +287,12 @@ export default {
         quizNum: [
           { required: true, message: '题目量不能为空', trigger: 'blur' }
         ]
-      }
+      },
+      questionTypes: [
+        { label: '单选题', value: '1' },
+        { label: '多选题', value: '2' },
+        { label: '判断题', value: '3' }
+      ]
     }
   },
   created() {
@@ -300,7 +320,7 @@ export default {
         creatorId: null,
         title: null,
         timeLimit: null,
-        discription: null,
+        description: null,
         totalPoints: null,
         state: null,
         startTime: null,
