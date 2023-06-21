@@ -79,6 +79,17 @@ export default {
       this.dialogVisible = true
     },
     beforeUpload(file) {
+      const isLt10M = file.size / 1024 / 1024 < 10
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+      if (!isLt10M) {
+        this.$message.error('上传图片大小不能超过 10MB!')
+      }
+      if (!isJpgOrPng) {
+        this.$message.error('上传图片只能是 JPG 或 PNG 格式!')
+      }
+      if (!isJpgOrPng || !isLt10M) {
+        return false
+      }
       const _self = this
       return new Promise((resolve, reject) => {
         policy().then(response => {
